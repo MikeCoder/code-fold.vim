@@ -21,7 +21,7 @@ Yet, just another code fold plugin for vim.
 3. If you want to unfold the code, just need to use `ff` or `<leader>zz` again.
 
 ####Key Bindings
-Using <leader>+zz and ff as default keybindings. If you want to change it to your custom keybindings.
+Using `<leader>+zz` and `ff` as default keybindings. If you want to change it to your custom keybindings.
 
 Just add `map {Your keybindings} @=((foldclosed(line('.')) < 0) ? 'zf' : 'zd')<CR>` to your vimrc file.
 
