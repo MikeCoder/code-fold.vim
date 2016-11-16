@@ -6,6 +6,7 @@ code-fold.vim
 Yet, just another code fold plugin for vim.
 
 ####Feature
+0. **Different views for the same file in different git branches**
 1. Save the fold you make when you leave vim.
 2. Auto load the view when you open the vim.
 3. Easy to install.
