@@ -29,6 +29,9 @@ Just add `map {Your keybindings} @=((foldclosed(line('.')) < 0) ? 'zf' : 'zd')<C
 ####Video
 ![Video](./doc/info.gif)
 
+####TroubleShooting
+Submit issue please.
+
 ####License
 See [License](./LICENSE)
 
