@@ -35,10 +35,7 @@ function! MLoadView()
     endif
 
     let rfile = $HOME . "/.vim/view/" . rfile
-    echo rfile
     let fileExists = system('if [ -f ' . rfile . ' ]; then echo 1; else echo 0; fi')
-    echo 'if [ -f ' . rfile . ' ]; then echo 1; else echo 0; fi'
-    echo fileExists
     if fileExists == 1
         let command = 'source ' . rfile
         execute command
