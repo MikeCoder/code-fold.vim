@@ -18,7 +18,7 @@ function! MMkView()
     if isGit == 1
         let wfile = system('echo ' . '$(echo ${$(echo ' . expand('%:p') . ')//\//-}"\c")-$(git branch | grep "*" | cut -d " " -f2)"\c"')
     else
-        let wfile = system('echo ' . '$(echo ${$(echo ' . expand('%:p') . ')//\//-}"\c")')
+        let wfile = system('echo ' . '$(echo ${$(echo ' . expand('%:p') . ')//\//-}"\c")"\c"')
     endif
 
     let command = 'mkview! ' . "~/.vim/view/" . wfile
@@ -31,11 +31,14 @@ function! MLoadView()
     if isGit == 1
         let rfile = system('echo ' . '$(echo ${$(echo ' . expand('%:p') . ')//\//-}"\c")-$(git branch | grep "*" | cut -d " " -f2)"\c"')
     else
-        let rfile = system('echo ' . '$(echo ${$(echo ' . expand('%:p') . ')//\//-}"\c")')
+        let rfile = system('echo ' . '$(echo ${$(echo ' . expand('%:p') . ')//\//-}"\c")"\c"')
     endif
 
     let rfile = $HOME . "/.vim/view/" . rfile
+    echo rfile
     let fileExists = system('if [ -f ' . rfile . ' ]; then echo 1; else echo 0; fi')
+    echo 'if [ -f ' . rfile . ' ]; then echo 1; else echo 0; fi'
+    echo fileExists
     if fileExists == 1
         let command = 'source ' . rfile
         execute command
