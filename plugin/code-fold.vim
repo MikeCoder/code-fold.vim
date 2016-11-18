@@ -13,6 +13,12 @@ au BufWinLeave *.* call MMkView() " mkview 1
 au BufWinEnter *.* call MLoadView() " silent! loadview 1
 
 function! MMkView()
+    let isInit = system('if [ -d ~/.vim/view ]; then echo 1; else echo 0; fi')
+    if isInit == 0
+        echo 'This is the first time to set the code fold plugin, create ~/.vim/view folder'
+        system('mkdir ~/.vim/view')
+    endif
+
     let isGit = system('d=`pwd`; while [ "$d" != "" ]; do [ -d "$d"/.git ] && echo 1 && exit; d=${d%/*}; done; echo 0; exit;')
 
     if isGit == 1

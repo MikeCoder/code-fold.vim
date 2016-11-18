@@ -26,6 +26,10 @@ Using `<leader>+zz` and `ff` as default keybindings. If you want to change it to
 
 Just add `map {Your keybindings} @=((foldclosed(line('.')) < 0) ? 'zf' : 'zd')<CR>` to your vimrc file.
 
+####Tips
+1. It need the *~/.vim/view* folder, so you should create the folder manually if the plugin inits failed.
+2. If you want to clean your previous view files, you can remove the files under *~/.vim/view* folder.
+
 ####Video
 ![Video](./doc/info.gif)
 
