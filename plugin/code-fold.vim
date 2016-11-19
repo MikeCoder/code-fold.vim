@@ -41,6 +41,8 @@ function! MLoadView()
         execute command
         let command = 'syntax on'
         execute command
+        let command = 'souce ~/.vim/vimrc'
+        execute command
     endif
 endfunction
 
