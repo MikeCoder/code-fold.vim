@@ -44,10 +44,6 @@ function! MLoadView()
     if fileExists == 1
         let command = 'source ' . rfile
         execute command
-        let command = 'syntax on'
-        execute command
-        let command = 'souce ~/.vim/vimrc'
-        execute command
     endif
 endfunction
 
