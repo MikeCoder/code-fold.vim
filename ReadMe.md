@@ -30,6 +30,7 @@ Just add `map {Your keybindings} @=((foldclosed(line('.')) < 0) ? 'zf' : 'zd')<C
 1. It need the *~/.vim/view* folder, so you should create the folder manually if the plugin inits failed.
 2. If you want to clean your previous view files, you can remove the files under *~/.vim/view* folder.
 3. If your code-flod.vim plugin not work, you can logout from you system and login again, if the problem not clear, submit issue with the result of *vim --version*.
+
 ####Video
 ![Video](./doc/info.gif)
 
