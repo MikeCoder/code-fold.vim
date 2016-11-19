@@ -6,6 +6,7 @@ TODO
 2. √ ~~when loadview sometimes the syntax is not working on Ubuntu.~~
 3. √ ~~generate different view files in different fold opening same file~~
 4. √ ~~error when the file is not under git control~~
+5. √ ~~fold not found when the first time~~
 
 ###Features:
 1. √ ~~when switch between different branches of git, the view will be different.~~

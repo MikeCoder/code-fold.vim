@@ -13,6 +13,8 @@ au BufWinLeave *.* call MMkView() " mkview 1
 au BufWinEnter *.* call MLoadView() " silent! loadview 1
 
 function! MMkView()
+    call InitPlugin()
+
     let isGit = system('d=`pwd`; while [ "$d" != "" ]; do [ -d "$d"/.git ] && echo 1 && exit; d=${d%/*}; done; echo 0; exit;')
 
     if isGit == 1
@@ -26,6 +28,8 @@ function! MMkView()
 endfunction
 
 function! MLoadView()
+    call InitPlugin()
+
     let isGit = system('d=`pwd`; while [ "$d" != "" ]; do [ -d "$d"/.git ] && echo 1 && exit; d=${d%/*}; done; echo 0; exit;')
 
     if isGit == 1
@@ -36,6 +40,7 @@ function! MLoadView()
 
     let rfile = $HOME . "/.vim/view/" . rfile
     let fileExists = system('if [ -f ' . rfile . ' ]; then echo 1; else echo 0; fi')
+
     if fileExists == 1
         let command = 'source ' . rfile
         execute command
@@ -43,6 +48,14 @@ function! MLoadView()
         execute command
         let command = 'souce ~/.vim/vimrc'
         execute command
+    endif
+endfunction
+
+function! InitPlugin()
+    let isInit = system('if [ -d ~/.vim/view ]; then echo 1; else echo 0; fi')
+    if isInit == 0
+        echo 'This is the first time to set the code fold plugin, create ~/.vim/view folder'
+        let res = system('mkdir ~/.vim/view')
     endif
 endfunction
 
