@@ -6,8 +6,9 @@
 set foldenable
 set foldmethod=manual
 set foldlevel=99
-
 set viewdir=$HOME/.vim/view
+
+se fcs=vert:\|
 
 au BufWinLeave *.* call MMkView() " mkview 1
 au BufWinEnter *.* call MLoadView() " silent! loadview 1
