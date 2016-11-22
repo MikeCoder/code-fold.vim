@@ -1,5 +1,5 @@
 """"""""""""""""""""""""""""""""""""""""""""
-" let VERSION = '0.0.2'
+" let VERSION = '0.0.5'
 " let AUTHOR  = 'Mike Tang'
 " let EMAIL   = 'mikecoder.cn@gmail.com'
 """"""""""""""""""""""""""""""""""""""""""""
@@ -15,6 +15,11 @@ au BufWinEnter *.* call MLoadView() " silent! loadview 1
 function! MMkView()
     call InitPlugin()
 
+    " most system file starts with '__'
+    if system("var='" . expand('%:f') . "'; if [[ ${var:0:2} == '__' ]]; then echo 1; else echo 0; fi") == 1
+        return
+    endif
+
     let isGit = system('d=`pwd`; while [ "$d" != "" ]; do [ -d "$d"/.git ] && echo 1 && exit; d=${d%/*}; done; echo 0; exit;')
 
     if isGit == 1
@@ -29,6 +34,11 @@ endfunction
 
 function! MLoadView()
     call InitPlugin()
+
+    " most system file starts with '__'
+    if system("var='" . expand('%:f') . "'; if [[ ${var:0:2} == '__' ]]; then echo 1; else echo 0; fi") == 1
+        return
+    endif
 
     let isGit = system('d=`pwd`; while [ "$d" != "" ]; do [ -d "$d"/.git ] && echo 1 && exit; d=${d%/*}; done; echo 0; exit;')
 
