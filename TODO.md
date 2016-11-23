@@ -8,7 +8,7 @@ TODO
 4. √ ~~error when the file is not under git control~~
 5. √ ~~fold not found when the first time~~
 6. √ ~~conflict with tarbar~~
-7. error when the file name contains 'space'
+7. √ ~~error when the file name contains 'space'~~
 
 ###Features:
 1. √ ~~when switch between different branches of git, the view will be different.~~

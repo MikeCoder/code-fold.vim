@@ -1,5 +1,5 @@
 """"""""""""""""""""""""""""""""""""""""""""
-" let VERSION = '0.0.5'
+" let VERSION = '0.0.6'
 " let AUTHOR  = 'Mike Tang'
 " let EMAIL   = 'mikecoder.cn@gmail.com'
 """"""""""""""""""""""""""""""""""""""""""""
@@ -21,12 +21,14 @@ function! MMkView()
         return
     endif
 
+    let currentFile = system('echo $(echo ' . expand('%:p') . ' | sed "s/[[:space:]]/=/g")"\c"')
+
     let isGit = system('d=`pwd`; while [ "$d" != "" ]; do [ -d "$d"/.git ] && echo 1 && exit; d=${d%/*}; done; echo 0; exit;')
 
     if isGit == 1
-        let wfile = system('echo ' . '$(echo ${$(echo ' . expand('%:p') . ')//\//=}"\c")-$(git branch | grep "*" | cut -d " " -f2)"\c"')
+        let wfile = system('echo ' . '$(echo ${$(echo ' . currentFile . ')//\//=}"\c")-$(git branch | grep "*" | cut -d " " -f2)"\c"')
     else
-        let wfile = system('echo ' . '$(echo ${$(echo ' . expand('%:p') . ')//\//=}"\c")"\c"')
+        let wfile = system('echo ' . '$(echo ${$(echo ' . currentFile . ')//\//=}"\c")"\c"')
     endif
 
     let command = 'mkview! ' . "~/.vim/view/" . wfile
@@ -41,12 +43,14 @@ function! MLoadView()
         return
     endif
 
+    let currentFile = system('echo $(echo ' . expand('%:p') . ' | sed "s/[[:space:]]/=/g")"\c"')
+
     let isGit = system('d=`pwd`; while [ "$d" != "" ]; do [ -d "$d"/.git ] && echo 1 && exit; d=${d%/*}; done; echo 0; exit;')
 
     if isGit == 1
-        let rfile = system('echo ' . '$(echo ${$(echo ' . expand('%:p') . ')//\//=}"\c")-$(git branch | grep "*" | cut -d " " -f2)"\c"')
+        let rfile = system('echo ' . '$(echo ${$(echo ' . currentFile . ')//\//=}"\c")-$(git branch | grep "*" | cut -d " " -f2)"\c"')
     else
-        let rfile = system('echo ' . '$(echo ${$(echo ' . expand('%:p') . ')//\//=}"\c")"\c"')
+        let rfile = system('echo ' . '$(echo ${$(echo ' . currentFile . ')//\//=}"\c")"\c"')
     endif
 
     let rfile = $HOME . "/.vim/view/" . rfile
