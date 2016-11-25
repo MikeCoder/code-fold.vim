@@ -26,9 +26,9 @@ function! MMkView()
     let isGit = system('d=`pwd`; while [ "$d" != "" ]; do [ -d "$d"/.git ] && echo 1 && exit; d=${d%/*}; done; echo 0; exit;')
 
     if isGit == 1
-        let wfile = system('echo ' . '$(echo ${$(echo ' . currentFile . ')//\//=}"\c")-$(git branch | grep "*" | cut -d " " -f2)"\c"')
+        let wfile = system('echo ' . '$(echo ${$(echo ' . currentFile . ')//\//=}"\c")-$(git branch | grep "*" | cut -d " " -f2).vim"\c"')
     else
-        let wfile = system('echo ' . '$(echo ${$(echo ' . currentFile . ')//\//=}"\c")"\c"')
+        let wfile = system('echo ' . '$(echo ${$(echo ' . currentFile . ')//\//=}"\c").vim"\c"')
     endif
 
     let command = 'mkview! ' . "~/.vim/view/" . wfile
@@ -48,9 +48,9 @@ function! MLoadView()
     let isGit = system('d=`pwd`; while [ "$d" != "" ]; do [ -d "$d"/.git ] && echo 1 && exit; d=${d%/*}; done; echo 0; exit;')
 
     if isGit == 1
-        let rfile = system('echo ' . '$(echo ${$(echo ' . currentFile . ')//\//=}"\c")-$(git branch | grep "*" | cut -d " " -f2)"\c"')
+        let rfile = system('echo ' . '$(echo ${$(echo ' . currentFile . ')//\//=}"\c")-$(git branch | grep "*" | cut -d " " -f2).vim"\c"')
     else
-        let rfile = system('echo ' . '$(echo ${$(echo ' . currentFile . ')//\//=}"\c")"\c"')
+        let rfile = system('echo ' . '$(echo ${$(echo ' . currentFile . ')//\//=}"\c").vim"\c"')
     endif
 
     let rfile = $HOME . "/.vim/view/" . rfile
